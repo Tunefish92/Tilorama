@@ -8,6 +8,21 @@ A fast deep-zoom image viewer. Drop in an image (or browse or paste it). A local
 tile pyramid, like Google Maps, and caches the tiles on disk. The browser then streams only the tiles that
 are currently visible, so a gigapixel image opens and pans as smoothly as a photo.
 
+![Rembrandt's Night Watch, 2.8 gigapixels, in Tilorama](docs/screenshots/overview.jpg)
+
+Zoomed in on the same image, down to the brush strokes:
+
+![Zoomed in to 18 %: faces and a collar in the centre of the painting](docs/screenshots/zoom.jpg)
+
+| Start page with the recently opened images | What is new, shown once after an update |
+| --- | --- |
+| ![Start page](docs/screenshots/start.jpg) | ![Changelog window](docs/screenshots/changelog.jpg) |
+
+The image in the screenshots is Rembrandt's *The Night Watch* (1642) as photographed by the Rijksmuseum at
+57,813 × 48,438 px. Painting and photograph are in the public domain
+([file on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Night_Watch_-_HD.jpg)). Tilorama
+cut it into 14,421 tiles in 36 seconds.
+
 - **Frontend:** React 19 + TypeScript + Vite; [OpenSeadragon 6](https://openseadragon.github.io/) (WebGL) renders the tiles
 - **Backend:** ASP.NET Core (.NET 10) minimal API; [libvips](https://www.libvips.org/) via NetVips generates the tiles
 
