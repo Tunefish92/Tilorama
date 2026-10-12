@@ -1,0 +1,130 @@
+/* Design tokens. Light is the default; dark applies via the OS preference or an explicit data-theme. */
+
+:root {
+  color-scheme: light;
+
+  --bg: #eef2f7;
+  --bg-radial-1: #e6fffb;
+  --bg-radial-2: #eef2ff;
+  --bg-raised: #ffffff;
+  --surface: #ffffff;
+  --surface-solid: #ffffff;
+  --surface-hover: #f4f7fb;
+  --surface-active: #e6ecf3;
+  --hover-tint: #f0fdfa;
+  --border: #dbe3ed;
+  --border-strong: #c5d0de;
+  --text: #1f2937;
+  --text-strong: #111827;
+  --text-muted: #6b7280;
+  --text-faint: #94a3b8;
+  --accent: #0f766e;
+  --accent-strong: #0f766e;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(20, 184, 166, 0.14);
+  --accent-2: #14b8a6;
+  --success: #16a34a;
+  --success-soft: rgba(22, 163, 74, 0.12);
+  --warning: #d97706;
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+  --viewer-bg: #f8fafc;
+  --scrim: rgba(15, 23, 42, 0.6);
+  --grid-line: rgba(15, 23, 42, 0.045);
+
+  --header-grad: linear-gradient(120deg, #0b5d56 0%, #1c8a80 65%, #22a194 100%);
+  --header-text: #ffffff;
+
+  --shadow-sm: 0 4px 14px rgba(31, 41, 55, 0.07);
+  --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  --font: 'Source Sans 3 Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --header-h: 64px;
+  --status-h: 32px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --bg: #0b1220;
+    --bg-radial-1: rgba(20, 184, 166, 0.1);
+    --bg-radial-2: rgba(37, 99, 235, 0.08);
+    --bg-raised: #141e29;
+    --surface: #141e29;
+    --surface-solid: #141e29;
+    --surface-hover: #101822;
+    --surface-active: #1c2a38;
+    --hover-tint: rgba(45, 212, 191, 0.1);
+    --border: #223140;
+    --border-strong: #33475a;
+    --text: #e5edf0;
+    --text-strong: #f8fafc;
+    --text-muted: #8ea0ab;
+    --text-faint: #5b6b78;
+    --accent: #2dd4bf;
+    --accent-strong: #2dd4bf;
+    --accent-contrast: #141e29;
+    --accent-soft: rgba(45, 212, 191, 0.16);
+    --accent-2: #5eead4;
+    --success: #34d399;
+    --success-soft: rgba(52, 211, 153, 0.14);
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --danger-soft: rgba(248, 113, 113, 0.16);
+    --viewer-bg: #0f1720;
+    --scrim: rgba(9, 14, 22, 0.68);
+    --grid-line: rgba(255, 255, 255, 0.035);
+    --header-grad: linear-gradient(120deg, #063d38 0%, #0b5850 65%, #0f6e63 100%);
+    --header-text: #ecfdf9;
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0b1220;
+  --bg-radial-1: rgba(20, 184, 166, 0.1);
+  --bg-radial-2: rgba(37, 99, 235, 0.08);
+  --bg-raised: #141e29;
+  --surface: #141e29;
+  --surface-solid: #141e29;
+  --surface-hover: #101822;
+  --surface-active: #1c2a38;
+  --hover-tint: rgba(45, 212, 191, 0.1);
+  --border: #223140;
+  --border-strong: #33475a;
+  --text: #e5edf0;
+  --text-strong: #f8fafc;
+  --text-muted: #8ea0ab;
+  --text-faint: #5b6b78;
+  --accent: #2dd4bf;
+  --accent-strong: #2dd4bf;
+  --accent-contrast: #141e29;
+  --accent-soft: rgba(45, 212, 191, 0.16);
+  --accent-2: #5eead4;
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.14);
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.16);
+  --viewer-bg: #0f1720;
+  --scrim: rgba(9, 14, 22, 0.68);
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --header-grad: linear-gradient(120deg, #063d38 0%, #0b5850 65%, #0f6e63 100%);
+  --header-text: #ecfdf9;
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+}

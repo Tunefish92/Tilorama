@@ -1,0 +1,368 @@
+.dropzone {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+}
+
+.dropzone__backdrop {
+  position: fixed;
+  inset: var(--header-h) 0 var(--status-h);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* A faint tile grid – a nod to what the app does. */
+.dropzone__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+}
+
+.dropzone__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  min-height: 100%;
+  padding: max(6vh, 32px) 16px 48px;
+}
+
+.dropzone__card {
+  width: min(620px, 100%);
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: rise-in 0.5s var(--ease-out);
+}
+
+.dropzone__target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 40px 32px 32px;
+  border: 1px dashed var(--accent-2);
+  border-radius: 10px;
+  background: var(--hover-tint);
+  text-align: center;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.dropzone__target:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.dropzone__target:hover:not(:disabled) .dropzone__browse {
+  border-color: var(--accent-2);
+  background: var(--accent-2);
+}
+
+.dropzone__target:disabled {
+  opacity: 0.6;
+}
+
+.dropzone__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.dropzone__title {
+  color: var(--text-strong);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.dropzone__subtitle {
+  max-width: 420px;
+  color: var(--text-muted);
+}
+
+.dropzone__browse {
+  margin-top: 14px;
+}
+
+.dropzone__hint,
+.dropzone__warning {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  margin: 12px 8px 4px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.dropzone__hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropzone__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dropzone__warning {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--warning) 14%, var(--surface));
+  color: var(--text);
+  text-align: left;
+}
+
+.dropzone__warning svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--warning);
+}
+
+.dropzone__warning code {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------------- recent */
+
+.recent {
+  width: min(1120px, 100%);
+  animation: rise-in 0.6s 0.08s var(--ease-out) backwards;
+}
+
+.recent__title {
+  margin: 0 0 12px 2px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+
+.recent__title span {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+
+.recent__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recent-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.recent-card:hover {
+  border-color: var(--accent-2);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.recent-card__open {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.recent-card__thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: var(--viewer-bg);
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------- deleting a card */
+
+.recent-card.is-deleting {
+  transform: none;
+}
+
+.recent-card.is-deleting .recent-card__open {
+  cursor: default;
+}
+
+.recent-card.is-deleting .recent-card__thumb img {
+  filter: grayscale(0.7) blur(3px);
+  transform: scale(1.06);
+}
+
+.recent-card.is-removed {
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity 0.35s ease 0.35s,
+    transform 0.35s var(--ease-out) 0.35s;
+}
+
+.deletion {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  background: rgba(9, 14, 22, 0.68);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  animation: fade-in 0.2s ease-out;
+}
+
+.deletion__label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.deletion__percent {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.deletion__bar {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.deletion__bar span {
+  background: var(--danger);
+  box-shadow: none;
+  transition: width 0.2s var(--ease-out);
+}
+
+.deletion__bar.is-indeterminate span {
+  width: 35% !important;
+  animation: indeterminate 1.1s ease-in-out infinite;
+}
+
+.deletion.is-done .deletion__bar span {
+  background: var(--success);
+}
+
+.deletion.is-done .deletion__bar span::after {
+  animation: none;
+}
+
+.deletion.is-done .deletion__label svg {
+  color: var(--success);
+}
+
+.deletion__count {
+  font-size: 11.5px;
+  opacity: 0.8;
+}
+
+.recent-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.recent-card:hover .recent-card__thumb img {
+  transform: scale(1.04);
+}
+
+.recent-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px 12px;
+}
+
+.recent-card__name {
+  overflow: hidden;
+  color: var(--text-strong);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recent-card__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.recent-card__time {
+  color: var(--text-faint);
+}
+
+.recent-card__delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  opacity: 0;
+  transition:
+    opacity 0.15s,
+    background 0.15s;
+}
+
+.recent-card:hover .recent-card__delete,
+.recent-card__delete:focus-visible {
+  opacity: 1;
+}
+
+.recent-card__delete:hover {
+  background: var(--danger);
+}

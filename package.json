@@ -1,0 +1,13 @@
+{
+  "name": "tilorama",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix client install",
+    "dev": "concurrently -k -n server,client -c blue,magenta \"dotnet watch run --project server/Tilorama.Server\" \"npm --prefix client run dev\"",
+    "start": "npm --prefix client run build && dotnet run --project server/Tilorama.Server -c Release",
+    "test": "dotnet test tilorama.slnx && npm --prefix client run lint && npm --prefix client run build"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

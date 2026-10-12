@@ -1,0 +1,56 @@
+.drop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--scrim);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.drop-overlay.is-visible {
+  opacity: 1;
+}
+
+.drop-overlay__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 44px;
+  border: 1px dashed var(--accent-2);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  color: var(--accent);
+  font-size: 13px;
+  text-align: center;
+  transform: scale(0.97);
+  transition: transform 0.35s var(--ease-out);
+}
+
+.drop-overlay.is-visible .drop-overlay__frame {
+  transform: scale(1);
+}
+
+.drop-overlay__frame strong {
+  color: var(--text-strong);
+  font-size: 17px;
+}
+
+.drop-overlay__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--hover-tint);
+  color: var(--accent);
+}

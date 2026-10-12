@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+node_modules/
+# built client, produced by `npm run build` in client/
+server/Tilorama.Server/wwwroot/
+# large downloaded test images
+testimages/
+
+# data folder of `docker compose up`
+tilorama-data/

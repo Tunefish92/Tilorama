@@ -1,0 +1,189 @@
+.statusbar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: var(--status-h);
+  padding: 0 8px;
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--text-muted);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.statusbar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-2) 55%, transparent) 50%, transparent);
+}
+
+.statusbar__spacer {
+  flex: 1;
+}
+
+.status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 6px;
+}
+
+.status-item + .status-item:not(.statusbar__spacer + .status-item) {
+  border-left: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.status-faint {
+  color: var(--text-faint);
+}
+
+.status-ok {
+  color: var(--success);
+}
+
+.status-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  color: var(--danger);
+}
+
+/* ------------------------------------------------------------ connection */
+
+.status-conn__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--warning);
+}
+
+.status-conn.is-online .status-conn__dot {
+  background: var(--success);
+}
+
+.status-conn.is-online .status-conn__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--success);
+  animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.status-conn.is-offline {
+  color: var(--danger);
+}
+
+.status-conn.is-offline .status-conn__dot {
+  background: var(--danger);
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ------------------------------------------------------------------ task */
+
+.status-task {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.status-meter {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  box-shadow: inset 0 0 0 1px var(--border);
+  overflow: hidden;
+}
+
+.status-meter > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.3s var(--ease-out);
+}
+
+.status-meter > span.is-full {
+  background: var(--warning);
+}
+
+/* ------------------------------------------------------------- the rest */
+
+.status-cursor span {
+  min-width: 58px;
+}
+
+.status-zoom {
+  min-width: 64px;
+  justify-content: flex-end;
+  color: var(--text);
+}
+
+.status-cache {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+.status-cache:hover {
+  background: var(--hover-tint);
+  color: var(--accent);
+}
+
+.status-copyright {
+  gap: 4px;
+}
+
+.status-copyright a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.status-copyright a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+@media (max-width: 1280px) {
+  .status-hide-md {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .status-hide-sm,
+  .status-conn__label,
+  .status-cursor {
+    display: none;
+  }
+}

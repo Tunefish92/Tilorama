@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/server/">
+    <Project Path="server/Tilorama.Server/Tilorama.Server.csproj" />
+    <Project Path="server/Tilorama.Tests/Tilorama.Tests.csproj" />
+  </Folder>
+</Solution>
