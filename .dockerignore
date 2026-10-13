@@ -15,6 +15,7 @@ testimages/
 **/*.user
 server/Tilorama.Tests/
 docs/
+unraid/
 docker-compose*.yml
 *.md
 !CHANGELOG.md

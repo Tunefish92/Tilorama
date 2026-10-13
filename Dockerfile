@@ -29,11 +29,13 @@ COPY --from=client /wwwroot/ /app/publish/wwwroot/
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-# The net.unraid.docker.* label gives the container its "WebUI" link on Unraid's Docker page.
+# The net.unraid.docker.* labels give the container its icon and "WebUI" link on Unraid's Docker
+# page even when it isn't installed from the Community Applications template (e.g. via Compose).
 LABEL org.opencontainers.image.title="Tilorama" \
       org.opencontainers.image.description="Fast deep-zoom viewer for gigapixel images" \
       org.opencontainers.image.source="https://github.com/Tunefish92/Tilorama" \
       org.opencontainers.image.licenses="MIT" \
+      net.unraid.docker.icon="https://raw.githubusercontent.com/Tunefish92/Tilorama/main/unraid/tilorama.png" \
       net.unraid.docker.webui="http://[IP]:[PORT:8080]/"
 
 # curl: container health check

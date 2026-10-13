@@ -46,6 +46,13 @@ keeps the data in `./tilorama-data`.
 Tilorama has no login: everyone who can reach the port can open images and clear the cache. The commands
 above bind it to this machine only. Publish the port as `-p 8080:8080` only on a network you trust.
 
+### Unraid
+
+Install **Tilorama** from the Apps tab (Community Applications). The template is
+[unraid/tilorama.xml](unraid/tilorama.xml), published through
+[Tunefish92/unraid-templates](https://github.com/Tunefish92/unraid-templates). It keeps the data in
+`/mnt/user/appdata/tilorama` and runs as Unraid's `nobody:users` (99:100).
+
 ## Run from source
 
 Requirements: .NET 10 SDK and Node.js 20.19 or newer. Works on Windows and Linux (x64 and ARM64); libvips
@@ -128,6 +135,7 @@ Keys: `O` open, `+`/`−` zoom, `0` fit, `1` 100 %, `R`/`Shift+R` rotate, `H`/`V
 ```
 CHANGELOG.md                    built into the app ("what is new")
 Dockerfile, docker-compose.yml  Docker image
+unraid/                         Unraid template and icon
 client/                         React app
   src/api/                      typed API client (XHR upload, SSE job watcher)
   src/app/actions.ts            open / upload / regenerate / cancel flows
