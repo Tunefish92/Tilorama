@@ -149,6 +149,15 @@ server/Tilorama.Server/  ASP.NET Core API
 server/Tilorama.Tests/   xUnit tests (pyramid levels, cancellation, LRU)
 ```
 
+## A note about this project
+
+I'm a hobby programmer with an interest in coding and software development. I can read and write code, but
+for this project, I used Claude AI as a development assistant to help me turn my ideas into a working
+project.
+
+I believe AI is a useful tool for learning, experimenting, and bringing ideas to life. I want to be
+transparent about how this project was created and acknowledge the role AI played in its development.
+
 ## License
 
 [MIT](LICENSE) © 2026 [Tunefish](https://github.com/Tunefish92)
